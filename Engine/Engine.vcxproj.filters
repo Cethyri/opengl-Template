@@ -45,6 +45,9 @@
     <ClCompile Include="scene01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="scene02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -77,12 +80,18 @@
     <ClInclude Include="scene01.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="scene02.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Resources\Shaders\basic.fs">
       <Filter>Resource Files\Shaders</Filter>
     </None>
     <None Include="..\Resources\Shaders\basic.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\transform.vs">
       <Filter>Resource Files\Shaders</Filter>
     </None>
   </ItemGroup>

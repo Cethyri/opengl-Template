@@ -85,11 +85,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Create</PrecompiledHeader>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\MiddleWare\glfw-3.2.1.bin.WIN32\include;$(SolutionDir)..\MiddleWare\glad\include;C:\Users\Christopher\Desktop\OneDrive - Neumont University\Code\C++\Gat350\MiddleWare\stb;C:\Users\Christopher\Desktop\OneDrive - Neumont University\Code\C++\Gat350\MiddleWare\glm-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\MiddleWare\glfw-3.2.1.bin.WIN32\include;$(SolutionDir)..\MiddleWare\glad\include;$(SolutionDir)..\MiddleWare\stb;$(SolutionDir)..\MiddleWare\glm-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,6 +157,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="scene01.cpp" />
+    <ClCompile Include="scene02.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="timer.cpp" />
   </ItemGroup>
@@ -167,6 +168,7 @@
     <ClInclude Include="renderer.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="scene01.h" />
+    <ClInclude Include="scene02.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system.h" />
     <ClInclude Include="targetver.h" />
@@ -175,6 +177,7 @@
   <ItemGroup>
     <None Include="..\Resources\Shaders\basic.fs" />
     <None Include="..\Resources\Shaders\basic.vs" />
+    <None Include="..\Resources\Shaders\transform.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
