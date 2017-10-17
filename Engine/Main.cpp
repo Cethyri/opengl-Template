@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "engine.h"
 #include "renderer.h"
-#include "GLM\glm\glm.hpp"
+#include "scene02.h"
 
 int main() {
 
@@ -13,15 +13,27 @@ int main() {
 		exit(EXIT_FAILURE);
 	}
 
+	std::shared_ptr<Scene> scene(new Scene02(engine.get()));
+	if (!scene->Initialize())
+	{
+		scene->Shutdown();
+		engine->Shutdown();
+		exit(EXIT_FAILURE);
+	}
+
+
 	while (!glfwWindowShouldClose(engine->Get<Renderer>()->m_window))
 	{
 		engine->Update();
 
-		// scene render
+		scene->Update();
+		scene->Render();
 
-		// render code
 
 		glfwSwapBuffers(engine->Get<Renderer>()->m_window);
 	}
+	scene->Shutdown();
 	engine->Shutdown();
+
+	return 0;
 }

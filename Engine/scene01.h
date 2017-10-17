@@ -15,8 +15,7 @@ public:
 	virtual void Shutdown() override;
 
 private:
-	GLuint program;
-	GLuint vboHandles[3];
-	GLuint vaoHandle;
+	GLuint m_program;
+	GLuint m_vboHandles[3];
+	GLuint m_vaoHandle;
 };
-
