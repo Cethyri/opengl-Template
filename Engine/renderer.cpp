@@ -40,7 +40,7 @@ bool Renderer::Initialize()
 	const GLFWvidmode* videoMode = glfwGetVideoMode(monitor);
 	m_window = glfwCreateWindow(videoMode->width, videoMode->height, "computer graphics", monitor, nullptr);
 #else
-	m_window = glfwCreateWindow(800, 600, "computer graphics", nullptr, nullptr);
+	m_window = glfwCreateWindow(1600, 1200, "computer graphics", nullptr, nullptr);
 #endif // FULLSCREEN
 	if (!m_window)
 	{
@@ -50,8 +50,8 @@ bool Renderer::Initialize()
 	glfwMakeContextCurrent(m_window);
 	glfwSetWindowSizeCallback(m_window, resize_callback);
 
-	Renderer::m_width = 800;
-	Renderer::m_height = 600;
+	Renderer::m_width = 1600;
+	Renderer::m_height = 1200;
 
 	if (!gladLoadGL())
 	{
@@ -191,4 +191,24 @@ std::string Renderer::ReadFile(const std::string& filename)
 	fileStream.close();
 
 	return content;
+}
+
+std::string Renderer::GetTypeString(GLenum type)
+{
+	switch (type)
+	{
+	case GL_FLOAT: return "float";
+	case GL_FLOAT_VEC2: return "vec2";
+	case GL_FLOAT_VEC3:    return "vec3";
+	case GL_FLOAT_VEC4:    return "vec4";
+	case GL_DOUBLE: return "double";
+	case GL_INT: return "int";
+	case GL_UNSIGNED_INT: return "unsigned int";
+	case GL_BOOL: return "bool";
+	case GL_FLOAT_MAT2:    return "mat2";
+	case GL_FLOAT_MAT3:    return "mat3";
+	case GL_FLOAT_MAT4:    return "mat4";
+	default:
+		return "Type not defined.";
+	}
 }

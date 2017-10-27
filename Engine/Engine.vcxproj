@@ -153,22 +153,30 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="image.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="scene01.cpp" />
     <ClCompile Include="scene02.cpp" />
+    <ClCompile Include="scene03.cpp" />
+    <ClCompile Include="scene04.cpp" />
+    <ClCompile Include="shader.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\MiddleWare\glad\include\glad\glad.h" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="image.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="scene01.h" />
     <ClInclude Include="scene02.h" />
+    <ClInclude Include="scene03.h" />
+    <ClInclude Include="scene04.h" />
+    <ClInclude Include="shader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system.h" />
     <ClInclude Include="targetver.h" />
@@ -177,6 +185,11 @@
   <ItemGroup>
     <None Include="..\Resources\Shaders\basic.fs" />
     <None Include="..\Resources\Shaders\basic.vs" />
+    <None Include="..\Resources\Shaders\gouraud.vs" />
+    <None Include="..\Resources\Shaders\phong.fs" />
+    <None Include="..\Resources\Shaders\phong.vs" />
+    <None Include="..\Resources\Shaders\texture_phong.fs" />
+    <None Include="..\Resources\Shaders\texture_phong.vs" />
     <None Include="..\Resources\Shaders\transform.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

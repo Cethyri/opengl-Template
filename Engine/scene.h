@@ -1,5 +1,6 @@
 #pragma once
 #include "engine.h"
+#include "shader.h"
 
 class Scene
 {
@@ -14,5 +15,7 @@ public:
 
 protected:
 	Engine* m_engine;
+
+	Shader m_shader;
 };
 

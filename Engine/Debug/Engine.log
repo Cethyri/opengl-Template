@@ -1,3 +1,10 @@
-﻿  scene02.cpp
-  Engine.vcxproj -> C:\Users\Christopher\Desktop\OneDrive - Neumont University\Code\C++\Gat350\Engine\Debug\Engine.exe
-  Engine.vcxproj -> C:\Users\Christopher\Desktop\OneDrive - Neumont University\Code\C++\Gat350\Engine\Debug\Engine.pdb (Partial PDB)
+﻿  scene04.cpp
+c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\scene04.cpp(122): error C2374: 'formatStorage': redefinition; multiple initialization
+  c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\scene04.cpp(111): note: see declaration of 'formatStorage'
+c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\scene04.cpp(123): error C2374: 'formatImage': redefinition; multiple initialization
+  c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\scene04.cpp(112): note: see declaration of 'formatImage'
+c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\scene04.cpp(133): error C2374: 'formatStorage': redefinition; multiple initialization
+  c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\scene04.cpp(111): note: see declaration of 'formatStorage'
+c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\scene04.cpp(134): error C2374: 'formatImage': redefinition; multiple initialization
+  c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\scene04.cpp(112): note: see declaration of 'formatImage'
+  image.cpp
