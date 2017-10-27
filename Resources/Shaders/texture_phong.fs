@@ -26,6 +26,8 @@ void main()
 	//vec3 normalMapVector = normalize(texture( normalSample, outFragmentTexCoord ).rgb*2.0 - 1.0);
 	//vec3 normalMapVector = vec3(0, 0, 1);
 
+
+
 	//mat3 toFaces = mat3(outFragmentNormal.zxy, outFragmentNormal.yzx, outFragmentNormal.xyz);
 
 	vec3 fragNormals = mxNormal * outFragmentNormal;
@@ -44,7 +46,7 @@ void main()
 	vec3 reflectLightVector = reflect(-positionToLight, fragNormals);
 	float specularIntensity = max(dot(reflectLightVector, positionToView), 0.0);
 
-	specularIntensity = pow(specularIntensity, 50.0);
+	specularIntensity = pow(specularIntensity, 10.0);
 	specular = lightColor * specularMaterial * specularIntensity;
 
 	
@@ -58,7 +60,7 @@ void main()
 
 	//vec3 outVertexColor = mix(textureColor, specularMapColor, specularIntensity) * (ambient + diffuse) + specular;
 	vec3 outVertexColor = textureColor * (ambient + diffuse) + (specular * specularMapValue);
-	//vec3 outVertexColor = (ambient + diffuse) + (specular);
+	//vec3 outVertexColor = textureColor * (ambient + diffuse) + (specular);
 
 	outFragmentColor = vec4(outVertexColor, 1.0f);
 }

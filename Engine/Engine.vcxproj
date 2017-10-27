@@ -186,10 +186,14 @@
     <None Include="..\Resources\Shaders\basic.fs" />
     <None Include="..\Resources\Shaders\basic.vs" />
     <None Include="..\Resources\Shaders\gouraud.vs" />
+    <None Include="..\Resources\Shaders\multi_texture_phong.fs" />
+    <None Include="..\Resources\Shaders\multi_texture_phong.vs" />
     <None Include="..\Resources\Shaders\phong.fs" />
     <None Include="..\Resources\Shaders\phong.vs" />
     <None Include="..\Resources\Shaders\texture_phong.fs" />
     <None Include="..\Resources\Shaders\texture_phong.vs" />
+    <None Include="..\Resources\Shaders\texture_phong_specular.fs" />
+    <None Include="..\Resources\Shaders\texture_phong_specular.vs" />
     <None Include="..\Resources\Shaders\transform.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
