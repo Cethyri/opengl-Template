@@ -116,20 +116,23 @@ bool Scene04::Initialize()
 	glVertexAttribFormat(2, 2, GL_FLOAT, GL_FALSE, 0);
 	glVertexAttribBinding(2, 2);
 
-	glGenTextures(3, m_textureHandle);
-	addTexture("C:\\Users\\Christopher\\Desktop\\OneDrive - Neumont University\\Code\\C++\\Gat350\\Engine\\Resources\\Textures\\crate.bmp", 0);
-	addTexture("C:\\Users\\Christopher\\Desktop\\OneDrive - Neumont University\\Code\\C++\\Gat350\\Engine\\Resources\\Textures\\Nuke.bmp", 1);
-	addTexture("C:\\Users\\Christopher\\Desktop\\OneDrive - Neumont University\\Code\\C++\\Gat350\\Engine\\Resources\\Textures\\grass.bmp", 2);
+	m_material.SetMaterial(glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), 10.0f);
+	m_material.LoadTexture2D("..\\Resources\\Textures\\crate.bmp", /*"crate",*/ GL_TEXTURE0);
+	m_material.LoadTexture2D("..\\Resources\\Textures\\crate_specular.bmp", /*"crate_specular",*/ GL_TEXTURE1);
+	m_material.LoadTexture2D("..\\Resources\\Textures\\grass.bmp", /*"crate_specular",*/ GL_TEXTURE2);
 
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
+	m_camera = new Camera("camera", this);
+	m_camera->Initialize(glm::vec3(-1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+
 	return 1;
 }
 
-void Scene04::addTexture(const char* fileName, int textureUnit)
+/*void Scene04::addTexture(const char* fileName, int textureUnit)
 {
 
 	int width;
@@ -147,18 +150,15 @@ void Scene04::addTexture(const char* fileName, int textureUnit)
 	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, formatImage, GL_UNSIGNED_BYTE, data);
 
 	delete[] data;
-}
+}*/
 
 void Scene04::Update()
 {
-	glm::vec3 ambientMaterial = glm::vec3(0.2f, 0.2f, 0.2f);
-	m_shader.SetUniform("ambientMaterial", ambientMaterial);
 
-	glm::vec3 diffuseMaterial = glm::vec3(0.8f, 0.8f, 0.8f);
-	m_shader.SetUniform("diffuseMaterial", diffuseMaterial);
-
-	glm::vec3 specularMaterial = glm::vec3(1.0f, 1.0f, 1.0f);
-	m_shader.SetUniform("specularMaterial", specularMaterial);
+	m_shader.SetUniform("material.ambient", m_material.m_ambient);
+	m_shader.SetUniform("material.diffuse", m_material.m_diffuse);
+	m_shader.SetUniform("material.specular", m_material.m_specular);
+	m_shader.SetUniform("material.shininess", m_material.m_shininess);
 
 	glm::mat4 translate = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
 
@@ -166,10 +166,10 @@ void Scene04::Update()
 	glm::mat4 rotate = glm::rotate(glm::mat4(1.0f), m_rotation, glm::vec3(1.0f, 0.0f, 1.0f));
 	glm::mat4 mxModel = translate * rotate;
 
+	m_camera->Update();
 
-
-	glm::mat4 mxView = glm::lookAt(glm::vec3(-1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-	glm::mat4 mxProjection = glm::perspective<float>(90.0, (float) m_engine->Get<Renderer>()->m_width / (float) m_engine->Get<Renderer>()->m_height, 0.0001f, 10000.0f);
+	glm::mat4 mxView = m_camera->GetView();
+	glm::mat4 mxProjection = m_camera->GetProjection();
 
 	glm::mat4 mxModelView = mxView * mxModel;
 	m_shader.SetUniform("mxModelView", mxModelView);

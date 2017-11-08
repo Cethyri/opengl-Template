@@ -11,9 +11,17 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 	}
 }
 
+float Input::s_scrollX;
+float Input::s_scrollY;
+
+static void scroll_callback(GLFWwindow * window, double xoffset, double yoffset)
+{
+	Input::s_scrollX = (float) xoffset;
+	Input::s_scrollY = (float) yoffset;
+}
+
 Input::Input(Engine* engine) : System(engine)
 {
-	//
 }
 
 Input::~Input()
@@ -22,6 +30,7 @@ Input::~Input()
 
 bool Input::Initialize()
 {
+	glfwSetScrollCallback(m_engine->Get<Renderer>()->m_window, &(scroll_callback));
 	return true;
 }
 
@@ -76,6 +85,7 @@ void Input::Update()
 			break;
 		}
 
+
 		iter->second = info;
 	}
 
@@ -106,6 +116,15 @@ void Input::Update()
 			x = (float)xd;
 			y = (float)yd;
 		}
+		else if (info.type == eAnalogType::MOUSE_Z)
+		{
+			x = s_scrollX;
+			y = s_scrollY;
+
+			s_scrollX = 0.0f;
+			s_scrollY = 0.0f;
+		}
+
 				
 		switch (info.type)
 		{
@@ -123,7 +142,12 @@ void Input::Update()
 			info.valueRelative = y - info.valueAbsolute;
 			info.valueAbsolute = y;
 			break;
+		case eAnalogType::MOUSE_Z:
+			info.valueRelative = (info.valueAbsolute == FLT_MAX) ? 0.0f : y;
+			info.valueAbsolute = y;
+			break;
 		}
+
 
 		iter->second = info;
 	}

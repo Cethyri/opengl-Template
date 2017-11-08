@@ -152,11 +152,16 @@
     <ClCompile Include="..\..\MiddleWare\glad\src\glad.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="input.cpp" />
+    <ClCompile Include="light.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="material.cpp" />
+    <ClCompile Include="object.cpp" />
     <ClCompile Include="renderer.cpp" />
+    <ClCompile Include="scene.cpp" />
     <ClCompile Include="scene01.cpp" />
     <ClCompile Include="scene02.cpp" />
     <ClCompile Include="scene03.cpp" />
@@ -164,12 +169,18 @@
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\MiddleWare\glad\include\glad\glad.h" />
+    <ClInclude Include="..\..\MiddleWare\stb\stb_image.h" />
+    <ClInclude Include="camera.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="light.h" />
+    <ClInclude Include="material.h" />
+    <ClInclude Include="object.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="scene01.h" />
@@ -181,6 +192,7 @@
     <ClInclude Include="system.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="transform.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Resources\Shaders\basic.fs" />

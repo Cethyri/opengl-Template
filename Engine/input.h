@@ -30,6 +30,7 @@ public:
 		INVALID,
 		MOUSE_X,
 		MOUSE_Y,
+		MOUSE_Z,
 		JOYSTICK_X,
 		JOYSTICK_Y,
 	};
@@ -63,6 +64,10 @@ public:
 	void AddAnalog(const std::string name, eAnalogType type, int id);
 	float GetAnalogAbsolute(const std::string name);
 	float GetAnalogRelative(const std::string name);
+
+	static float s_scrollX;
+	static float s_scrollY;
+
 
 private:
 	std::map<std::string, ButtonInfo> m_buttons;
