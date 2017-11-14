@@ -65,8 +65,8 @@ bool Scene06::Initialize()
 	model->m_shader.SetUniform("light.specular", light->m_specular);
 	model->m_shader.SetUniform("light.position", light->m_transform.position);
 
-	model->m_shader.SetUniform("fog.distanceMin", 1.0f);
-	model->m_shader.SetUniform("fog.distanceMax", 50.0f);
+	model->m_shader.SetUniform("fog.distanceMin", 5.0f);
+	model->m_shader.SetUniform("fog.distanceMax", 20.0f);
 	model->m_shader.SetUniform("fog.color", glm::vec3(0.5f, 0.5f, 0.5f));
 
 	model->m_mesh.Load("..\\Resources\\Meshes\\cube.obj");
