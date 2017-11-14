@@ -13,6 +13,7 @@ c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engin
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\renderer.obj
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\renderable.obj
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\object.obj
+c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\meshloader.obj
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\material.obj
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\main.obj
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\light.obj
@@ -20,9 +21,11 @@ c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engin
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\image.obj
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\engine.obj
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\camera.obj
-c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\glad.obj
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\scene05.obj
-c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\meshloader.obj
+c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\glad.obj
+c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\model.obj
+c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\mesh.obj
+c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\engine\debug\scene06.obj
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\debug\engine.exe
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\debug\engine.ilk
 c:\users\christopher\desktop\onedrive - neumont university\code\c++\gat350\engine\debug\engine.pdb

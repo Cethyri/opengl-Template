@@ -34,7 +34,7 @@ layout (location=0) out vec4 outFragmentColor;
 void main()
 {
 
-	vec3 fragNormals = mxNormal * outFragmentNormal;
+	vec3 fragNormals = normalize(mxNormal * outFragmentNormal);
 
 	vec3 ambient = light.ambient * material.ambient;
 
@@ -53,7 +53,6 @@ void main()
 	specularIntensity = pow(specularIntensity, material.shininess);
 	specular = light.specular * material.specular * specularIntensity;
 
-	
 	vec3 textureColor = vec3(texture(textureSample, outFragmentTexCoord));
 
 	vec3 specularMapColor = vec3(texture(specularSample, outFragmentTexCoord));

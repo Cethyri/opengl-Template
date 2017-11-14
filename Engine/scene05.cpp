@@ -113,26 +113,6 @@ bool Scene05::Initialize()
 	return 1;
 }
 
-/*void Scene05::addTexture(const char* fileName, int textureUnit)
-{
-
-	int width;
-	int height;
-	int bpp;
-
-	const unsigned char* data = Image::LoadBMP(fileName, width, height, bpp);
-
-	glActiveTexture(GL_TEXTURE0 + textureUnit);
-	glBindTexture(GL_TEXTURE_2D, m_textureHandle[textureUnit]);
-
-	GLuint formatStorage = bpp == 32 ? GL_RGBA8 : GL_RGB8;
-	GLuint formatImage = bpp == 32 ? GL_BGRA : GL_BGR;
-	glTexStorage2D(GL_TEXTURE_2D, 1, formatStorage, width, height);
-	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, formatImage, GL_UNSIGNED_BYTE, data);
-
-	delete[] data;
-}*/
-
 void Scene05::Update()
 {
 	if (m_engine->Get<Input>()->GetButton("application quit") == Input::eButtonState::DOWN)

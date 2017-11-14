@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "engine.h"
 #include "renderer.h"
-#include "scene05.h"
+#include "scene06.h"
 
 int main() {
 
@@ -13,7 +13,7 @@ int main() {
 		exit(EXIT_FAILURE);
 	}
 
-	std::shared_ptr<Scene> scene(new Scene05(engine.get()));
+	std::shared_ptr<Scene> scene(new Scene06(engine.get()));
 	if (!scene->Initialize())
 	{
 		scene->Shutdown();
@@ -27,9 +27,6 @@ int main() {
 
 		scene->Update();
 		scene->Render();
-
-
-		glfwSwapBuffers(engine->Get<Renderer>()->m_window);
 	}
 	scene->Shutdown();
 	engine->Shutdown();

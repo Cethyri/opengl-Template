@@ -53,7 +53,7 @@ inline std::vector<T*> Scene::GetObjects()
 		//if (typeof(object) == T)
 		if (dynamic_cast<T*>(object) != nullptr)
 		{
-			objects.push_back(object);
+			objects.push_back(dynamic_cast<T*>(object));
 		}
 	}
 

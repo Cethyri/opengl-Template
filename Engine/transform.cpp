@@ -20,5 +20,5 @@ glm::mat4 Transform::GetMatrix44()
 	glm::mat4 mxr = glm::mat4_cast(rotation);
 	glm::mat4 mxs = glm::scale(glm::mat4(1.0f), scale);
 
-	return mxt * mxr * mxs;
+	return mxt * (mxr * mxs);
 }

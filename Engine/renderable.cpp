@@ -10,7 +10,3 @@ Renderable::Renderable(const std::string& name, Scene* scene) : Object(name, sce
 Renderable::~Renderable()
 {
 }
-
-void Renderable::Update()
-{
-}
