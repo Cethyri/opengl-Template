@@ -30,7 +30,5 @@ private:
 	GLuint m_textureHandle[2];
 
 	float m_rotation;
-
-	Camera* m_camera;
 };
 

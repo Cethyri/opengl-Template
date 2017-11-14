@@ -1,13 +1,13 @@
 #pragma once
 #include "engine.h"
 #include "shader.h"
+#include "object.h"
 
-class Object;
 class Scene
 {
 public:
 	Scene(Engine* engine) : m_engine(engine) {};
-	//~Scene();
+	~Scene();
 
 	virtual bool Initialize() = 0;
 	virtual void Update() = 0;
@@ -39,6 +39,8 @@ inline T * Scene::GetObject(const std::string & name)
 			return dynamic_cast<T*>(object);
 		}
 	}
+
+	return nullptr;
 }
 
 template<typename T>
@@ -54,5 +56,6 @@ inline std::vector<T*> Scene::GetObjects()
 			objects.push_back(object);
 		}
 	}
+
 	return objects;
 }

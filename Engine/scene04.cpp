@@ -1,11 +1,12 @@
 #include "stdafx.h"
-#include "scene01.h"
 #include "renderer.h"
 #include "glm\glm.hpp"
 #include "glm\gtc\matrix_transform.hpp"
 #include "scene04.h"
 #include "timer.h"
 #include "image.h"
+#include "light.h"
+#include "input.h"
 
 namespace
 {
@@ -126,8 +127,25 @@ bool Scene04::Initialize()
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
-	m_camera = new Camera("camera", this);
-	m_camera->Initialize(glm::vec3(-1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+	m_engine->Get<Input>()->AddButton("application quit", Input::eButtonType::KEYBOARD, GLFW_KEY_ESCAPE);
+
+	Camera* camera = new Camera("camera", this);
+	camera->Initialize(glm::vec3(-1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+
+	AddObject(camera);
+
+	Light* light = new Light("light", this);
+
+	light->m_ambient = glm::vec3(0.75f, 0.85f, 1.0f);
+	light->m_diffuse = glm::vec3(0.75f, 0.85f, 1.0f);
+	light->m_specular = glm::vec3(0.75f, 0.85f, 1.0f);
+
+	Transform lightPosition;
+
+	lightPosition.position = glm::vec3(-10.0f, 10.0f, 10.0f);
+	light->m_transform = lightPosition;
+
+	AddObject(light);
 
 	return 1;
 }
@@ -154,6 +172,16 @@ bool Scene04::Initialize()
 
 void Scene04::Update()
 {
+	if (m_engine->Get<Input>()->GetButton("application quit") == Input::eButtonState::DOWN)
+	{
+		glfwSetWindowShouldClose(m_engine->Get<Renderer>()->m_window, GLFW_TRUE);
+	}
+
+	//auto objects = GetObjects<Object>();
+	for (auto object : m_objects)
+	{
+		object->Update();
+	}
 
 	m_shader.SetUniform("material.ambient", m_material.m_ambient);
 	m_shader.SetUniform("material.diffuse", m_material.m_diffuse);
@@ -166,10 +194,10 @@ void Scene04::Update()
 	glm::mat4 rotate = glm::rotate(glm::mat4(1.0f), m_rotation, glm::vec3(1.0f, 0.0f, 1.0f));
 	glm::mat4 mxModel = translate * rotate;
 
-	m_camera->Update();
+	Camera* camera = GetObject<Camera>("camera");
 
-	glm::mat4 mxView = m_camera->GetView();
-	glm::mat4 mxProjection = m_camera->GetProjection();
+	glm::mat4 mxView = camera->GetView();
+	glm::mat4 mxProjection = camera->GetProjection();
 
 	glm::mat4 mxModelView = mxView * mxModel;
 	m_shader.SetUniform("mxModelView", mxModelView);
@@ -182,11 +210,14 @@ void Scene04::Update()
 	mxNormal = glm::transpose(mxNormal);
 	m_shader.SetUniform("mxNormal", mxNormal);
 
-	glm::vec3 lightPosition = mxView * glm::vec4(-10.0f, 10.0f, 10.0f, 1.0f);
-	m_shader.SetUniform("lightPosition", lightPosition);
+	Light* light = GetObject<Light>("light");
 
-	glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
-	m_shader.SetUniform("lightColor", lightColor);
+	m_shader.SetUniform("light.ambient", light->m_ambient);
+	m_shader.SetUniform("light.diffuse", light->m_diffuse);
+	m_shader.SetUniform("light.specular", light->m_specular);
+
+	glm::vec3 lightPosition = mxView * glm::vec4(light->m_transform.position, 1.0f);
+	m_shader.SetUniform("light.position", lightPosition);
 
 }
 

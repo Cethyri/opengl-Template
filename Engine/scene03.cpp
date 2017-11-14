@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "scene01.h"
 #include "renderer.h"
 #include "glm\glm.hpp"
 #include "glm\gtc\matrix_transform.hpp"

@@ -1,11 +1,2 @@
-﻿  scene04.cpp
-  scene03.cpp
-  scene02.cpp
-  scene01.cpp
-  scene.cpp
-  object.cpp
-  light.cpp
-  camera.cpp
-  Main.cpp
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+﻿  scene05.cpp
   Engine.vcxproj -> C:\Users\Christopher\Desktop\OneDrive - Neumont University\Code\C++\Gat350\Engine\Debug\Engine.exe

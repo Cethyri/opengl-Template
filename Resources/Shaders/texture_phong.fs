@@ -18,33 +18,31 @@ struct Material
 	float shininess;
 };
 
-uniform Material material;
+struct Light
+{
+	vec3 ambient;
+	vec3 diffuse;
+	vec3 specular;
+	vec3 position;
+};
 
-uniform vec3 lightPosition;
-uniform vec3 lightColor;
+uniform Material material;
+uniform Light light;
 
 layout (location=0) out vec4 outFragmentColor;
 
 void main()
 {
 
-	//vec3 normalMapVector = normalize((vec3(texture(normalSample, outFragmentTexCoord)) / 2) - vec3(1));
-	//vec3 normalMapVector = normalize(texture( normalSample, outFragmentTexCoord ).rgb*2.0 - 1.0);
-	//vec3 normalMapVector = vec3(0, 0, 1);
-
-
-
-	//mat3 toFaces = mat3(outFragmentNormal.zxy, outFragmentNormal.yzx, outFragmentNormal.xyz);
-
 	vec3 fragNormals = mxNormal * outFragmentNormal;
 
-	vec3 ambient = lightColor * material.ambient;
+	vec3 ambient = light.ambient * material.ambient;
 
-	vec3 positionToLight = normalize(lightPosition - vec3(outFragmentPosition));
+	vec3 positionToLight = normalize(light.position - vec3(outFragmentPosition));
 
 	float diffuseIntensity = max(dot(positionToLight, fragNormals), 0.0);
 
-	vec3 diffuse = lightColor * material.diffuse * diffuseIntensity;
+	vec3 diffuse = light.diffuse * material.diffuse * diffuseIntensity;
 
 	vec3 specular = vec3(0.0);
 
@@ -53,7 +51,7 @@ void main()
 	float specularIntensity = max(dot(reflectLightVector, positionToView), 0.0);
 
 	specularIntensity = pow(specularIntensity, material.shininess);
-	specular = lightColor * material.specular * specularIntensity;
+	specular = light.specular * material.specular * specularIntensity;
 
 	
 	vec3 textureColor = vec3(texture(textureSample, outFragmentTexCoord));
@@ -61,8 +59,6 @@ void main()
 	vec3 specularMapColor = vec3(texture(specularSample, outFragmentTexCoord));
 
 	float specularMapValue = (specularMapColor.x + specularMapColor.y + specularMapColor.z) / 3;
-
-	
 
 	//vec3 outVertexColor = mix(textureColor, specularMapColor, specularIntensity);// * (ambient + diffuse) + specular;
 	vec3 outVertexColor = textureColor * (ambient + diffuse) + (specular * specularMapValue);

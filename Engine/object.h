@@ -1,7 +1,7 @@
 #pragma once
 #include "transform.h"
-#include "scene.h"
 
+class Scene;
 class Object
 {
 public:

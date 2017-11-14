@@ -19,6 +19,9 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{b6dcdac5-df6d-421d-aafe-ead4bd0b7292}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{8973e437-1a64-4f79-99e7-c2aa226d5171}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -72,13 +75,22 @@
     <ClCompile Include="object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="camera.cpp">
+    <ClCompile Include="scene.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>Objects</Filter>
     </ClCompile>
     <ClCompile Include="light.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Objects</Filter>
     </ClCompile>
-    <ClCompile Include="scene.cpp">
+    <ClCompile Include="renderable.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="scene05.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="meshLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,10 +152,19 @@
     <ClInclude Include="object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="light.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="renderable.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="scene05.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="meshLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
