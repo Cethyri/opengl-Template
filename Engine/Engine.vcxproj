@@ -172,6 +172,7 @@
     <ClCompile Include="scene04.cpp" />
     <ClCompile Include="scene05.cpp" />
     <ClCompile Include="scene06.cpp" />
+    <ClCompile Include="scene07.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="timer.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="scene04.h" />
     <ClInclude Include="scene05.h" />
     <ClInclude Include="scene06.h" />
+    <ClInclude Include="scene07.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system.h" />

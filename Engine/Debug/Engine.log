@@ -1,2 +1,5 @@
-﻿  scene06.cpp
+﻿  scene07.cpp
+  Main.cpp
+  glad.c
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Engine.vcxproj -> C:\Users\Christopher\Desktop\OneDrive - Neumont University\Code\C++\Gat350\Engine\Debug\Engine.exe

@@ -102,6 +102,9 @@
     <ClCompile Include="scene06.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="scene07.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -183,6 +186,9 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="scene06.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="scene07.h">
       <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>
