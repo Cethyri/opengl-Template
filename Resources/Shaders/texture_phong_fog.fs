@@ -18,7 +18,6 @@ struct Material
 
 struct Light
 {
-	vec3 ambient;
 	vec3 diffuse;
 	vec3 specular;
 	vec3 position;
@@ -40,7 +39,7 @@ layout (location=0) out vec4 outFragmentColor;
 
 void main()
 {
-	vec3 ambient = light.ambient * material.ambient;
+	vec3 ambient = material.ambient;
 
 	vec3 positionToLight = normalize(light.position - vec3(outFragmentPosition));
 

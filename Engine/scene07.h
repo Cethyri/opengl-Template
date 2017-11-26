@@ -15,8 +15,6 @@ public:
 	virtual void Update() override;
 	virtual void Render() override;
 	virtual void Shutdown() override;
-private:
-	//void addTexture(const char* fileName, int textureUnit);
 
 private:
 	GLuint m_vboHandle[3];
@@ -36,5 +34,7 @@ private:
 	GLuint m_textureHandle[2];
 
 	float m_rotation;
+
+	bool m_pointLightMode = true;
 };
 

@@ -16,7 +16,8 @@ void Model::Update()
 {
 	m_shader.Use();
 
-	Camera* camera = m_scene->GetObject<Camera>("camera");
+	std::string cameraID = (m_cameraID.empty()) ? "camera" : m_cameraID;
+	Camera* camera = m_scene->GetObject<Camera>(cameraID);
 
 	glm::mat4 mxView = camera->GetView();
 	glm::mat4 mxProjection = camera->GetProjection();

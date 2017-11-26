@@ -27,6 +27,25 @@ void Material::SetMaterial(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specu
 	m_shininess = shininess;
 }
 
+GLuint Material::CreateTexture(GLuint width, GLuint height)
+{
+	GLuint texture;
+
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	return texture;
+}
+
+void Material::AddTexture(GLuint texture, GLuint activeTexture)
+{
+	TextureInfo textureInfo = { activeTexture, texture };
+	m_textures.push_back(textureInfo);
+}
+
 bool Material::LoadTexture2D(const std::string & filename, GLuint activeTexture)
 {
 

@@ -34,5 +34,4 @@ void Light::Render()
 {
 	m_shader.Use();
 	m_mesh.Render();
-
 }

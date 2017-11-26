@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "engine.h"
 #include "renderer.h"
-#include "scene07.h"
+#include "scene09.h"
 
 int main() {
 
@@ -13,7 +13,7 @@ int main() {
 		exit(EXIT_FAILURE);
 	}
 
-	std::shared_ptr<Scene> scene(new Scene07(engine.get()));
+	std::shared_ptr<Scene> scene(new Scene09(engine.get()));
 	if (!scene->Initialize())
 	{
 		scene->Shutdown();

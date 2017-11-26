@@ -9,6 +9,10 @@ public:
 
 	void SetMaterial(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, float shininess);
 
+	static GLuint CreateTexture(GLuint width, GLuint height);
+
+	void AddTexture(GLuint texture, GLuint activeTexture);
+
 	bool LoadTexture2D(const std::string& filename, GLuint activeTexture);
 	void SetTextures();
 

@@ -19,5 +19,6 @@ public:
 	Mesh m_mesh;
 	Shader m_shader;
 	Material m_material;
+	std::string m_cameraID;
 };
 

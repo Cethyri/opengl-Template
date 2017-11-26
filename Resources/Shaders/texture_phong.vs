@@ -6,6 +6,7 @@ layout (location=2) in vec2 vertexTexCoord;
 
 uniform mat4 mxModelView;
 uniform mat4 mxMVP;
+uniform mat3 mxNormal;
 
 out vec4 outFragmentPosition;
 out vec3 outFragmentNormal;
@@ -14,7 +15,7 @@ out vec2 outFragmentTexCoord;
 void main()
 {
 	outFragmentPosition = mxModelView * vec4(vertexPosition, 1.0);
-	outFragmentNormal = vertexNormal;
+	outFragmentNormal = normalize(mxNormal * vertexNormal);
 
 	outFragmentTexCoord = vertexTexCoord;
 

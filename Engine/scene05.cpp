@@ -167,9 +167,14 @@ void Scene05::Update()
 void Scene05::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glBindVertexArray(m_vaoHandle); // will be used for different object groups
-	glDrawArrays(GL_TRIANGLES, 0, m_numVertices);
-	glBindVertexArray(0);
+
+	std::vector<Renderable*> renderables = GetObjects<Renderable>();
+	for (auto renderable : renderables)
+	{
+		renderable->Render();
+	}
+
+	glfwSwapBuffers(m_engine->Get<Renderer>()->m_window);
 }
 
 void Scene05::Shutdown()

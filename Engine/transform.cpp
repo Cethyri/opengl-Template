@@ -16,7 +16,7 @@ Transform::~Transform()
 
 glm::mat4 Transform::GetMatrix44()
 {
-	glm::mat4 mxt = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+	glm::mat4 mxt = glm::translate(glm::mat4(1.0f), position);
 	glm::mat4 mxr = glm::mat4_cast(rotation);
 	glm::mat4 mxs = glm::scale(glm::mat4(1.0f), scale);
 

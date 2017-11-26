@@ -105,6 +105,12 @@
     <ClCompile Include="scene07.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="scene08.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="scene09.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -191,6 +197,12 @@
     <ClInclude Include="scene07.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="scene08.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="scene09.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Resources\Shaders\basic.fs">
@@ -233,6 +245,21 @@
       <Filter>Resource Files\Shaders</Filter>
     </None>
     <None Include="..\Resources\Shaders\texture_phong_fog.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\basic_color.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\phong_directional.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\phong_directional.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\phong_spotlight.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\phong_multilight.fs">
       <Filter>Resource Files\Shaders</Filter>
     </None>
   </ItemGroup>
