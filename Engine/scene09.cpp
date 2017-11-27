@@ -110,7 +110,7 @@ bool Scene09::Initialize()
 
 
 	GLuint texture = Material::CreateTexture(512, 512);
-	model->m_material.AddTexture(texture, GL_TEXTURE0);
+	model->m_material.AddTexture(GL_TEXTURE_2D, texture, GL_TEXTURE0);
 
 	AddObject(model);
 
