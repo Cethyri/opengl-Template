@@ -29,8 +29,6 @@ private:
 
 	std::vector<glm::vec2> m_uvs;
 
-	Material m_material;
-
 	GLuint m_textureHandle[2];
 };
 
