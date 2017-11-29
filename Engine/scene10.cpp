@@ -40,7 +40,7 @@ bool Scene10::Initialize()
 	model->m_transform.rotation = glm::vec3(0.0f, 0.0f, 0.0f);
 	model->m_transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
 
-	model->m_mesh.Load("..\\Resources\\Meshes\\suzanne.obj");
+	model->m_mesh.Load("..\\Resources\\Meshes\\puma.obj");
 	model->m_mesh.BindVertexAttrib(0, Mesh::eVertexType::POSITION);
 	model->m_mesh.BindVertexAttrib(1, Mesh::eVertexType::NORMAL);
 
@@ -72,7 +72,7 @@ bool Scene10::Initialize()
 
 
 	model = new Model("skybox", this);
-	model->m_transform.scale = glm::vec3(20.0f);
+	model->m_transform.scale = glm::vec3(80.0f);
 	model->m_transform.rotation = glm::vec3(0.0f, 0.0f, 0.0f);
 	model->m_transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
 
@@ -128,8 +128,8 @@ void Scene10::Update()
 	float dt = m_engine->Get<Timer>()->FrameTime();
 
 	//glm::quat rotation = glm::angleAxis(dt, glm::vec3(0.0f, 1.0f, 0.0f));
-	glm::quat rotation = glm::angleAxis(dt, glm::normalize(camera->m_transform.position));
-	model->m_transform.rotation = rotation * model->m_transform.rotation;
+	//glm::quat rotation = glm::angleAxis(dt, glm::normalize(camera->m_transform.position));
+	//model->m_transform.rotation = rotation * model->m_transform.rotation;
 
 	auto models = GetObjects<Model>();
 	for (auto model : models)

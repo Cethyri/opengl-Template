@@ -56,6 +56,7 @@ void main()
 
 	//vec3 outVertexColor = mix(textureColor, specularMapColor, specularIntensity);// * (ambient + diffuse) + specular;
 	//vec3 outVertexColor = textureColor * (ambient + diffuse) + (specular * specularMapValue);
+	
 	vec3 outVertexColor = textureColor * (ambient + diffuse) + (specular);
 
 	outFragmentColor = vec4(outVertexColor, 1.0f);

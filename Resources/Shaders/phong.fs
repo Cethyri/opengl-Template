@@ -25,15 +25,12 @@ void main()
 
 
 	vec3 specular = vec3(0.0);
-	//if (diffuseIntensity > 0.0)
-	//{
-		vec3 positionToView = normalize(-outFragmentPosition.xyz); 
-		vec3 reflectLightVector = reflect(-positionToLight, outFragmentNormal);
-		float specularIntensity = max(dot(reflectLightVector, positionToView), 0.0);
+	vec3 positionToView = normalize(-outFragmentPosition.xyz); 
+	vec3 reflectLightVector = reflect(-positionToLight, outFragmentNormal);
+	float specularIntensity = max(dot(reflectLightVector, positionToView), 0.0);
 
-		specularIntensity = pow(specularIntensity, 10.0);
-		specular = lightColor * specularMaterial * specularIntensity;
-	//}
+	specularIntensity = pow(specularIntensity, 10.0);
+	specular = lightColor * specularMaterial * specularIntensity;
 
 	vec3 outVertexColor = ambient + diffuse + specular;
 

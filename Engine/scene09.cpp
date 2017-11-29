@@ -75,8 +75,8 @@ bool Scene09::Initialize()
 
 	AddObject(model);
 
-
 	model = new Model("cube", this);
+
 	model->m_transform.scale = glm::vec3(1.0f);
 	model->m_transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
 	model->m_transform.rotation = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -90,8 +90,8 @@ bool Scene09::Initialize()
 	model->m_shader.PrintActiveAttribs();
 	model->m_shader.PrintActiveUniforms();
 
-	model->m_material.m_ambient = glm::vec3(0.2f, 0.2f, 0.2f);
-	model->m_material.m_diffuse = glm::vec3(0.2f, 0.2f, 0.2f);
+	model->m_material.m_ambient = glm::vec3(1.0f, 1.0f, 1.0f);
+	model->m_material.m_diffuse = glm::vec3(1.0f, 1.0f, 1.0f);
 	model->m_material.m_specular = glm::vec3(1.0f, 1.0f, 1.0f);
 	model->m_material.m_shininess = 100.0f;
 
