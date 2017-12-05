@@ -23,7 +23,7 @@ subroutine(reflectionModelType)
 vec3 reflection()
 {
     vec3 worldPosition = vec3( mxModel * vec4(vertexPosition,1.0) );
-    vec3 worldNormal = vec3(mxModel * vec4(vertexNormal, 0.0));
+    vec3 worldNormal = normalize(vec3(mxModel * vec4(vertexNormal, 0.0)));
     vec3 worldView = normalize(cameraWorldPosition - worldPosition);
 
     return reflect(-worldView, worldNormal);

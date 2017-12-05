@@ -36,7 +36,7 @@ bool Scene10::Initialize()
 
 	// model
 	auto model = new Model("model", this);
-	model->m_transform.scale = glm::vec3(1.0f);
+	model->m_transform.scale = glm::vec3(2.0f);
 	model->m_transform.rotation = glm::vec3(0.0f, 0.0f, 0.0f);
 	model->m_transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
 

@@ -176,6 +176,7 @@
     <ClCompile Include="scene08.cpp" />
     <ClCompile Include="scene09.cpp" />
     <ClCompile Include="scene10.cpp" />
+    <ClCompile Include="scene11.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="timer.cpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="scene08.h" />
     <ClInclude Include="scene09.h" />
     <ClInclude Include="scene10.h" />
+    <ClInclude Include="scene11.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system.h" />
@@ -221,6 +223,7 @@
     <None Include="..\Resources\Shaders\gouraud.vs" />
     <None Include="..\Resources\Shaders\multi_texture_phong.fs" />
     <None Include="..\Resources\Shaders\multi_texture_phong.vs" />
+    <None Include="..\Resources\Shaders\normal_phong.fs" />
     <None Include="..\Resources\Shaders\phong.fs" />
     <None Include="..\Resources\Shaders\phong.vs" />
     <None Include="..\Resources\Shaders\phong_directional.fs" />
