@@ -283,5 +283,8 @@
     <None Include="..\Resources\Shaders\normal_phong.fs">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+    <None Include="..\Resources\Shaders\normal_phong.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

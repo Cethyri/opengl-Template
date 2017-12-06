@@ -33,7 +33,7 @@ bool Scene11::Initialize()
 
 	// light
 	Light* light = new Light("light", this);
-	light->m_transform.position = glm::vec3(0.0f, 1.0f, 1.0f);
+	light->m_transform.position = glm::vec3(0.0f, 2.0f, 2.0f);
 	//light->m_diffuse = glm::rgbColor(glm::vec3(glm::linearRand(0.0f, 360.0f), 1.0f, 0.8f));
 	light->m_diffuse = glm::vec3(1.0f, 1.0f, 1.0f);
 	light->m_specular = glm::vec3(1.0f, 1.0f, 1.0f);
@@ -41,17 +41,18 @@ bool Scene11::Initialize()
 
 	// model
 
-	auto model = new Model("quad", this);
+	auto model = new Model("ogre", this);
 	model->m_transform.scale = glm::vec3(1.0f);
 	model->m_transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
 	model->m_transform.rotation = glm::vec3(0.0f, 0.0f, 0.0f);
 
-	model->m_mesh.Load("..\\Resources\\Meshes\\quad.obj");
+	model->m_mesh.Load("..\\Resources\\Meshes\\ogre.obj", true);
 	model->m_mesh.BindVertexAttrib(0, Mesh::eVertexType::POSITION);
 	model->m_mesh.BindVertexAttrib(1, Mesh::eVertexType::NORMAL);
 	model->m_mesh.BindVertexAttrib(2, Mesh::eVertexType::TEXCOORD);
+	model->m_mesh.BindVertexAttrib(3, Mesh::eVertexType::TANGENT);
 
-	model->m_shader.CompileShader("..\\Resources\\Shaders\\texture_phong.vs", GL_VERTEX_SHADER);
+	model->m_shader.CompileShader("..\\Resources\\Shaders\\normal_phong.vs", GL_VERTEX_SHADER);
 	model->m_shader.CompileShader("..\\Resources\\Shaders\\normal_phong.fs", GL_FRAGMENT_SHADER);
 	model->m_shader.Link();
 	model->m_shader.Use();
@@ -60,10 +61,10 @@ bool Scene11::Initialize()
 
 	model->m_material.m_ambient = glm::vec3(0.2f, 0.2f, 0.2f);
 	model->m_material.m_diffuse = glm::vec3(0.8f, 0.8f, 0.8f);
-	model->m_material.m_specular = glm::vec3(.05f);
+	model->m_material.m_specular = glm::vec3(1.0f);
 	model->m_material.m_shininess = 100.0f;
-	model->m_material.LoadTexture2D("..\\Resources\\Textures\\rocks.jpg", GL_TEXTURE0);
-	model->m_material.LoadTexture2D("..\\Resources\\Textures\\rocks_normal.jpg", GL_TEXTURE1);
+	model->m_material.LoadTexture2D("..\\Resources\\Textures\\ogre_diffuse.bmp", GL_TEXTURE0);
+	model->m_material.LoadTexture2D("..\\Resources\\Textures\\ogre_normal.bmp", GL_TEXTURE1);
 
 	model->m_shader.SetUniform("material.ambient", model->m_material.m_ambient);
 	model->m_shader.SetUniform("material.diffuse", model->m_material.m_diffuse);
@@ -92,18 +93,21 @@ void Scene11::Update()
 	Camera* camera = GetObject<Camera>("camera");
 
 	float dt = m_engine->Get<Timer>()->FrameTime();
-	m_rotation = 1.0f * dt;
+	m_rotation = dt;
 
-	glm::quat rotation = glm::angleAxis(m_rotation, glm::vec3(0.0f, 0.0f, 1.0f)/* glm::normalize(camera->m_transform.position)*/);
+	glm::quat rotation = glm::angleAxis(m_rotation, glm::vec3(0.0f, 1.0f, 0.0f)/* glm::normalize(camera->m_transform.position)*/);
 	light->m_transform.position = rotation * light->m_transform.position;
 
 	glm::vec4 position = camera->GetView() * glm::vec4(light->m_transform.position, 1.0f);
+
 
 	auto models = GetObjects<Model>();
 	for (auto model : models)
 	{
 		model->m_shader.Use();
 		model->m_shader.SetUniform("light.position", position);
+		model->m_shader.SetUniform("lightPosition", position);
+
 	}
 
 	auto objects = GetObjects<Object>();

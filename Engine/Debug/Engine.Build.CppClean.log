@@ -5,6 +5,9 @@ c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\transform.obj
 c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\timer.obj
 c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\stdafx.obj
 c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\shader.obj
+c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\scene10.obj
+c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\scene09.obj
+c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\scene08.obj
 c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\scene07.obj
 c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\scene06.obj
 c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\scene05.obj
@@ -27,11 +30,9 @@ c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\image.obj
 c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\engine.obj
 c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\camera.obj
 c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\glad.obj
-c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\scene08.obj
-c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\scene09.obj
-c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\scene10.obj
-c:\users\christopher\desktop\git repos\gat350\engine\debug\engine.ilk
+c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\scene11.obj
 c:\users\christopher\desktop\git repos\gat350\engine\debug\engine.exe
+c:\users\christopher\desktop\git repos\gat350\engine\debug\engine.ilk
 c:\users\christopher\desktop\git repos\gat350\engine\debug\engine.pdb
 c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\engine.tlog\cl.command.1.tlog
 c:\users\christopher\desktop\git repos\gat350\engine\engine\debug\engine.tlog\cl.read.1.tlog

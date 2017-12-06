@@ -34,7 +34,7 @@ void Mesh::Render()
 	glBindVertexArray(0);
 }
 
-bool Mesh::Load(const std::string& filename)
+bool Mesh::Load(const std::string& filename, bool createTangents)
 {
 	tinyobj::attrib_t attrib;
 	std::vector<tinyobj::shape_t> shapes;
@@ -64,6 +64,7 @@ bool Mesh::Load(const std::string& filename)
 	std::vector<glm::vec3> vertices;
 	std::vector<glm::vec3> normals;
 	std::vector<glm::vec2> texcoords;
+	std::vector<glm::vec3> tangents;
 
 	// load buffers
 	for (const auto& shape : shapes)
@@ -120,6 +121,20 @@ bool Mesh::Load(const std::string& filename)
 		}
 	}
 
+	if (createTangents && !texcoords.empty())
+	{
+		for (size_t i = 0; i < vertices.size(); i += 3)
+		{
+			glm::vec3 tangent;
+			CalculateTangent(tangent, vertices[i + 0], vertices[i + 1], vertices[i + 2], texcoords[i + 0], texcoords[i + 1], texcoords[i + 2], normals[i]);
+			tangents.push_back(tangent);
+			tangents.push_back(tangent);
+			tangents.push_back(tangent);
+		}
+	}
+
+
+
 	// set
 	if (!vertices.empty())
 	{
@@ -133,6 +148,11 @@ bool Mesh::Load(const std::string& filename)
 	{
 		AddBuffer(eVertexType::TEXCOORD, texcoords.size(), sizeof(glm::vec2), (GLvoid*)texcoords.data());
 	}
+	if (!tangents.empty())
+	{
+		AddBuffer(eVertexType::TANGENT, tangents.size(), sizeof(glm::vec3), (GLvoid*)tangents.data());
+	}
+
 
 	// create vertex array object
 	glGenVertexArrays(1, &m_vao);
@@ -182,4 +202,21 @@ void Mesh::CalculateNormal(glm::vec3& normal, const glm::vec3& v0, const glm::ve
 
 	normal = glm::cross(v1 - v0, v2 - v0);
 	normal = glm::normalize(normal);
+}
+
+void Mesh::CalculateTangent(glm::vec3 & tangent, const glm::vec3 & pv0, const glm::vec3 & pv1, const glm::vec3 & pv2, const glm::vec2 & uv0, const glm::vec2 & uv1, const glm::vec2 & uv2, const glm::vec3 & normal)
+{
+	glm::vec3 edge1 = pv1 - pv0;
+	glm::vec3 edge2 = pv2 - pv0;
+
+	float u1 = uv1[0] - uv0[0];
+	float v1 = uv1[1] - uv0[1];
+	float u2 = uv2[0] - uv0[0];
+	float v2 = uv2[1] - uv0[1];
+
+	float r = 1.0f / (u1 * v2 - v1 * u2); // determinant
+
+	tangent = (edge1 * v2 - edge2 * v1) * r;
+
+	tangent = glm::normalize(tangent - (normal * glm::dot(normal, tangent)));
 }

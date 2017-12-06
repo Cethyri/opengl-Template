@@ -1,8 +1,10 @@
 #version 430
 
-in vec4 outFragmentPosition;
-in vec3 outFragmentNormal;
 in vec2 outFragmentTexCoord;
+
+in vec4 outTangentPosition;
+in vec3 outTangentLightPosition;
+
 
 layout (binding=0) uniform sampler2D textureSample;
 layout (binding=1) uniform sampler2D normalSample;
@@ -32,7 +34,7 @@ void phong(in vec4 position, in vec3 normal, out vec3 ambientDiffuse, out vec3 s
 
 	vec3 ambient = material.ambient;
 
-	vec3 positionToLight = vec3(normalize(light.position - position));
+	vec3 positionToLight = normalize(outTangentLightPosition - vec3(position));
 
 	float diffuseIntensity = max(dot(positionToLight, normal), 0.0);
 
@@ -56,7 +58,7 @@ void main()
 	vec3 normal = texture(normalSample, outFragmentTexCoord).rgb;
 	normal = normalize(normal * 2.0 - 1.0);
 
-	phong(outFragmentPosition, normal, ambientDiffuse, specular);
+	phong(outTangentPosition, normal, ambientDiffuse, specular);
 
 	vec3 textureColor = vec3(texture(textureSample, outFragmentTexCoord));
 

@@ -224,6 +224,7 @@
     <None Include="..\Resources\Shaders\multi_texture_phong.fs" />
     <None Include="..\Resources\Shaders\multi_texture_phong.vs" />
     <None Include="..\Resources\Shaders\normal_phong.fs" />
+    <None Include="..\Resources\Shaders\normal_phong.vs" />
     <None Include="..\Resources\Shaders\phong.fs" />
     <None Include="..\Resources\Shaders\phong.vs" />
     <None Include="..\Resources\Shaders\phong_directional.fs" />
