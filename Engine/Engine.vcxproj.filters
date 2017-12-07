@@ -117,6 +117,9 @@
     <ClCompile Include="scene11.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="scene12.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -215,6 +218,9 @@
     <ClInclude Include="scene11.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="scene12.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Resources\Shaders\basic.fs">
@@ -284,6 +290,18 @@
       <Filter>Resource Files\Shaders</Filter>
     </None>
     <None Include="..\Resources\Shaders\normal_phong.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\shadow_depth.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\shadow_depth_debug.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\shadow_depth_debug.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\shadow_depth.fs">
       <Filter>Resource Files\Shaders</Filter>
     </None>
   </ItemGroup>

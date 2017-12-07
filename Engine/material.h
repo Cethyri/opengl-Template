@@ -11,6 +11,10 @@ public:
 
 	static GLuint CreateTexture(GLuint width, GLuint height);
 
+	static GLuint CreateDepthTexture(GLuint width, GLuint height);
+
+	static GLuint CreateDepthbuffer(GLuint texture, GLuint width, GLuint height);
+
 	void AddTexture(GLenum type, GLuint texture, GLuint activeTexture);
 
 	bool LoadTexture2D(const std::string& filename, GLuint activeTexture);

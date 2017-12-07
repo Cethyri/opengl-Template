@@ -34,7 +34,5 @@ private:
 	GLuint m_textureHandle[2];
 
 	float m_rotation;
-
-	bool m_pointLightMode = true;
 };
 
