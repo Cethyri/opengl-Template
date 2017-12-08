@@ -35,7 +35,7 @@ bool Scene12::Initialize()
 {
 	// light
 	Light* light = new Light("light", this);
-	light->m_transform.position = glm::vec3(2.0f, 2.0f, 3.0f);
+	light->m_transform.position = glm::vec3(0.0f, 3.0f, 2.0f);
 	//light->m_diffuse = glm::rgbColor(glm::vec3(glm::linearRand(0.0f, 360.0f), 1.0f, 0.8f));
 	light->m_diffuse = glm::vec3(1.0f, 1.0f, 1.0f);
 	light->m_specular = glm::vec3(1.0f, 1.0f, 1.0f);
@@ -61,8 +61,8 @@ bool Scene12::Initialize()
 	model->m_mesh.BindVertexAttrib(1, Mesh::eVertexType::NORMAL);
 	model->m_mesh.BindVertexAttrib(2, Mesh::eVertexType::TEXCOORD);
 
-	model->m_shader.CompileShader("..\\Resources\\Shaders\\texture_phong.vs", GL_VERTEX_SHADER);
-	model->m_shader.CompileShader("..\\Resources\\Shaders\\texture_phong.fs", GL_FRAGMENT_SHADER);
+	model->m_shader.CompileShader("..\\Resources\\Shaders\\shadow_phong.vs", GL_VERTEX_SHADER);
+	model->m_shader.CompileShader("..\\Resources\\Shaders\\shadow_phong.fs", GL_FRAGMENT_SHADER);
 	model->m_shader.Link();
 	model->m_shader.Use();
 	model->m_shader.PrintActiveAttribs();
@@ -73,6 +73,7 @@ bool Scene12::Initialize()
 	model->m_material.m_specular = glm::vec3(1.0f);
 	model->m_material.m_shininess = 100.0f;
 	model->m_material.LoadTexture2D("..\\Resources\\Textures\\brick.png", GL_TEXTURE0);
+	model->m_material.AddTexture(GL_TEXTURE_2D, GL_TEXTURE1, depthTexture);
 
 	model->m_shader.SetUniform("material.ambient", model->m_material.m_ambient);
 	model->m_shader.SetUniform("material.diffuse", model->m_material.m_diffuse);
@@ -96,8 +97,8 @@ bool Scene12::Initialize()
 	model->m_mesh.BindVertexAttrib(1, Mesh::eVertexType::NORMAL);
 	model->m_mesh.BindVertexAttrib(2, Mesh::eVertexType::TEXCOORD);
 
-	model->m_shader.CompileShader("..\\Resources\\Shaders\\texture_phong.vs", GL_VERTEX_SHADER);
-	model->m_shader.CompileShader("..\\Resources\\Shaders\\texture_phong.fs", GL_FRAGMENT_SHADER);
+	model->m_shader.CompileShader("..\\Resources\\Shaders\\shadow_phong.vs", GL_VERTEX_SHADER);
+	model->m_shader.CompileShader("..\\Resources\\Shaders\\shadow_phong.fs", GL_FRAGMENT_SHADER);
 	model->m_shader.Link();
 	model->m_shader.Use();
 	model->m_shader.PrintActiveAttribs();
@@ -108,6 +109,7 @@ bool Scene12::Initialize()
 	model->m_material.m_specular = glm::vec3(1.0f);
 	model->m_material.m_shininess = 100.0f;
 	model->m_material.LoadTexture2D("..\\Resources\\Textures\\brick.png", GL_TEXTURE0);
+	model->m_material.AddTexture(GL_TEXTURE_2D, GL_TEXTURE1, depthTexture);
 
 	model->m_shader.SetUniform("material.ambient", model->m_material.m_ambient);
 	model->m_shader.SetUniform("material.diffuse", model->m_material.m_diffuse);
@@ -198,12 +200,22 @@ void Scene12::Update()
 
 	glm::vec4 position = camera->GetView() * glm::vec4(light->m_transform.position, 1.0f);
 
+	glm::mat4 mxBias(
+		0.5f, 0.0f, 0.0f, 0.0f,
+		0.0f, 0.5f, 0.0f, 0.0f,
+		0.0f, 0.0f, 0.5f, 0.0f,
+		0.5f, 0.5f, 0.5f, 1.0f
+	);
 
 	auto models = GetObjects<Model>();
 	for (auto model : models)
 	{
 		model->m_shader.Use();
 		model->m_shader.SetUniform("light.position", position);
+
+		glm::mat4 mxModel = model->m_transform.GetMatrix44();
+		glm::mat4 mxBVP = mxBias * mxVP * mxModel;
+		model->m_shader.SetUniform("mxMLP", mxBVP);
 
 	}
 
